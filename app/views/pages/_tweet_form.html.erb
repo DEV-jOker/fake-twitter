@@ -1,0 +1,8 @@
+<%= form_tag tweets_path, remote: true, method: :post do %>
+    <div class="form-group tweet">
+        <%= text_area_tag :tweet, params[:tweet], placeholder: "Post Your Tweets", autofocus: false, class: "form-control form-control-lg" %>
+        <%= button_tag type: :submit, class: "btn btn-success btn-sm" do %>
+          <%= 'Tweet' %>
+        <% end %>
+    </div>
+  <% end %>
