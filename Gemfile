@@ -39,8 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Using for styling
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
-
 gem 'font-awesome-rails'
+
+#Using for creating Users and Authentication
+gem 'devise'
+gem 'devise-bootstrap-views','~>1.0'
 
 
 

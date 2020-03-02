@@ -1,2 +1,55 @@
-<h1>Pages#profile</h1>
-<p>Find me in app/views/pages/profile.html.erb</p>
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= fa_icon 'user' %> <%= @user.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= @user.email%></h6>
+      </div>
+    </div>
+
+
+    <%= form_tag tweets_path, remote: true, method: :post do %>
+    <div class="form-group tweet">
+        <%= text_area_tag :tweet, params[:tweet], placeholder: "Post Your Tweets", autofocus: false, class: "form-control form-control-lg" %>
+        <%= button_tag type: :submit, class: "btn btn-success btn-sm" do %>
+          <%= 'Tweet' %>
+        <% end %>
+    </div>
+  <% end %>
+  </div>
+  <div class="col-sm-6">
+  <% @tweets.each do |tweet|%>
+      <div class="card ">
+        <div class="card-body">
+          <h5 class="card-title"><%= @user.name %>:</h5>
+          <p class="card-text"><%= tweet.tweet %></p>
+          <%if @user.id==current_user.id%>
+            <%= link_to 'Delete', tweet_path(tweet), method: :delete, data: {confirm: 'Are you sure?'},
+                                          class: 'btn btn-sm btn-danger' %>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <div class="col-sm-3">
+    <div class='search-area'>
+  <h6>Search Users</h6>
+  <%= form_tag '#', remote: true, method: :get do %>
+    <div class="form-group row">
+      <div class="col-sm-9 no-right-padding">
+        <%= text_field_tag :user, params[:user], placeholder: "Name or Email", autofocus: true, class: "form-control form-control-lg" %>
+      </div>
+      <div class="col-sm-3 no-left-padding">
+        <%= button_tag type: :submit, class: "btn btn-success" do %>
+          <%= fa_icon 'search' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div id="results">
+
+</div>
+  </div>
+</div>
