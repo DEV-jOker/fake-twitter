@@ -1,0 +1,14 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
+
+nav.navbar{
+  margin-bottom: 1rem;
+}
+
+.search-area{
+  padding-top:5rem
+}
+
+.results-block{
+  display: inline-block;
+}
